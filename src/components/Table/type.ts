@@ -6,6 +6,7 @@ export type DefineTableColumn = {
   width?: string
   custom?: {
     component: Component
+    /**返回的组件 prop 处理方式 */
     valHandle: (val: string) => Record<string, any>
   }
 }

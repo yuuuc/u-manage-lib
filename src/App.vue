@@ -22,12 +22,14 @@ const columns = TableColumns().append([
   {
     type: 'image',
     label: '图片',
-    prop: 'image'
+    prop: 'image',
+    width: '130px'
   },
   {
     type: 'custom',
     label: '自定义',
     prop: 'custom',
+    width: '130px',
     custom: {
       component: TableImage,
       valHandle(val) {
@@ -47,12 +49,19 @@ const addClick = () => {
     address: 'No. 189, Grove St, Los Angeles222222'
   })
 }
+
+const modifyClick = () => {
+  data[0].address = '11111111111111'
+  data[0].custom =
+    'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg;https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF'
+}
 </script>
 
 <template>
   <div class="container">
     <Table :columns="columns"></Table>
     <button @click="addClick">add</button>
+    <button @click="modifyClick">modify</button>
   </div>
 </template>
 
