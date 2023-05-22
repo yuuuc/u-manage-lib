@@ -1,30 +1,59 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { TableColumns, getTableComponent } from '#components/Table'
+import { TableImage } from '#components/Table/components/TableImage'
+
+const columns = TableColumns().append([
+  {
+    type: 'text',
+    label: '日期',
+    prop: 'date'
+  },
+  {
+    type: 'text',
+    label: '姓名',
+    prop: 'name'
+  },
+  {
+    type: 'text',
+    label: '地址',
+    prop: 'address',
+    width: '300px'
+  },
+  {
+    type: 'image',
+    label: '图片',
+    prop: 'image'
+  },
+  {
+    type: 'custom',
+    label: '自定义',
+    prop: 'custom',
+    custom: {
+      component: TableImage,
+      valHandle(val) {
+        const vals = val.split(';')
+        return {
+          src: vals.length >= 2 ? vals[1] : vals[0]
+        }
+      }
+    }
+  }
+]).columns
+const { Table, data } = getTableComponent({ columns })
+const addClick = () => {
+  data.push({
+    date: '2016-05-01',
+    name: 'Tom2222',
+    address: 'No. 189, Grove St, Los Angeles222222'
+  })
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="container">
+    <Table :columns="columns"></Table>
+    <button @click="addClick">add</button>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
