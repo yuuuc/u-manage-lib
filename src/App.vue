@@ -2,6 +2,10 @@
 import { TableColumns, getTableComponent } from '#components/Table'
 import { TableImage } from '#components/Table/components/TableImage'
 
+setInterval(() => {
+  const now = new Date()
+  console.log(now.getHours(), now.getMinutes(), now.getSeconds())
+}, 1000)
 const columns = TableColumns().append([
   {
     type: 'text',
