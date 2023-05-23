@@ -2,10 +2,10 @@
 import { TableColumns, getTableComponent } from '#components/Table'
 import { TableImage } from '#components/Table/components/TableImage'
 
-setInterval(() => {
-  const now = new Date()
-  console.log(now.getHours(), now.getMinutes(), now.getSeconds())
-}, 1000)
+// setInterval(() => {
+//   const now = new Date()
+//   console.log(now.getHours(), now.getMinutes(), now.getSeconds())
+// }, 1000)
 const columns = TableColumns().append([
   {
     type: 'text',
@@ -37,6 +37,10 @@ const columns = TableColumns().append([
     custom: {
       component: TableImage,
       valHandle(val) {
+        if (!val)
+          return {
+            src: ''
+          }
         const vals = val.split(';')
         return {
           src: vals.length >= 2 ? vals[1] : vals[0]

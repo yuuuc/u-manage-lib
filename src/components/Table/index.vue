@@ -11,7 +11,6 @@
           v-if="item.type === 'text'"
           :content="scope.row[item.prop]"
         ></TableText>
-        <!-- <span v-if="item.type === 'text'"> {{ scope.row[item.prop] }}</span> -->
         <TableImage
           v-if="item.type === 'image'"
           :src="scope.row[item.prop]"

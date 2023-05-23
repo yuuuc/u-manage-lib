@@ -1,4 +1,4 @@
-import { createVNode, reactive } from 'vue'
+import { createVNode, reactive, h } from 'vue'
 import TableConstruct from './index.vue'
 import type { DefineTableColumn, TableProps } from './type'
 import { TableColumns } from './utils'
@@ -47,7 +47,7 @@ const getTableComponent = (props: TableProps) => {
         'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg;https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF'
     }
   ])
-  const vNode = createVNode(TableConstruct, {
+  const vNode = h(TableConstruct, {
     columns: props.columns,
     data
   })
