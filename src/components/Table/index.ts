@@ -1,4 +1,4 @@
-import { createVNode, reactive, h } from 'vue'
+import { reactive, h, isVNode } from 'vue'
 import TableConstruct from './index.vue'
 import type { DefineTableColumn, TableProps } from './type'
 import { TableColumns } from './utils'
@@ -51,6 +51,7 @@ const getTableComponent = (props: TableProps) => {
     columns: props.columns,
     data
   })
+
   return {
     Table: vNode,
     data
